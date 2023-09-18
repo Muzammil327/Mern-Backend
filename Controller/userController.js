@@ -165,7 +165,7 @@ export const loginController = asyncHandler(async (req, res) => {
   );
   const options = {
     path: '/',
-  httpOnly: true,
+  httpOnly: false,
   secure: true, // Requires HTTPS
   expires: new Date(Date.now() + 86400000), // Expires in 24 hourspath: "/",
    
