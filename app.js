@@ -39,4 +39,6 @@ const customDirectory = './public/image/product/'; // Replace with your desired 
 
 app.use('/static', express.static(path.join(__dirname, customDirectory)));
 
+
+
 export default app;
