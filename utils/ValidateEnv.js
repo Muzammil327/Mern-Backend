@@ -4,7 +4,7 @@ const env = cleanEnv(process.env, {
   MONGO_URL: str(),
   PORT: port(),
   DEV_MODE: str(),
-//   PASSWORD_SECRET_KEY: str(),
+  PASSWORD_SECRET_KEY: str(),
   JWT_SECRET_KEY: str(),
 });
 

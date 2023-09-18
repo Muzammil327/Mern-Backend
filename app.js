@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-
 import path from "path";
 import { fileURLToPath } from 'url';
 
@@ -19,10 +18,11 @@ dotenv.config();
 const app = express();
 var corsOptions = {
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    origin: 'http://localhost:5173',
     // origin: 'https://authorization-sigma.vercel.app',
     // origin: '*',
     // credentials: true,
+    origin: process.env.DEV_MODE === 'development' ? 'http://localhost:5173' : 'https://authorization-sigma.vercel.app',
+    // origin: `DEV_MODE === 'development' ? 'http://localhost:5173' : 'https://authorization-sigma.vercel.app'`,
     // optionsSuccessStatus: 200
     // origin: 'https://authorization-sigma.vercel.app',
     credentials: true, // Enable credentials (e.g., cookies)
