@@ -20,6 +20,7 @@ const app = express();
 var corsOptions = {
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     origin: 'http://localhost:5173',
+    // origin: 'https://authorization-sigma.vercel.app',
     credentials: true,
     optionsSuccessStatus: 200 
   }
