@@ -165,10 +165,9 @@ export const loginController = asyncHandler(async (req, res) => {
   );
   const options = {
     path: '/',
-  httpOnly: true,
   secure: true, // Requires HTTPS
   expires: new Date(Date.now() + 86400000), // Expires in 24 hourspath: "/",
-    httpOnly: true,
+   
   };
   res.cookie("token", token, options);
   try {
