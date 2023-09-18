@@ -21,9 +21,11 @@ var corsOptions = {
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     // origin: 'http://localhost:5173',
     // origin: 'https://authorization-sigma.vercel.app',
-    origin: '*',
-    credentials: true,
-    optionsSuccessStatus: 200 
+    // origin: '*',
+    // credentials: true,
+    // optionsSuccessStatus: 200
+    origin: 'https://authorization-sigma.vercel.app',
+    credentials: true, // Enable credentials (e.g., cookies)
   }
 // app use
 app.use(cors(corsOptions));
