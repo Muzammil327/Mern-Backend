@@ -34,13 +34,13 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json())
+// app.use('/static', express.static(path.join(__dirname, customDirectory)));
 // app.use(notFound);
 // app.use(errorHandler);
 
 
-const customDirectory = './public/image/product/'; // Replace with your desired directory
+// const customDirectory = './public/image/product/'; // Replace with your desired directory
 
-app.use('/static', express.static(path.join(__dirname, customDirectory)));
 
 
 

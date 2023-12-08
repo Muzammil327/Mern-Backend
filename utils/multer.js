@@ -11,15 +11,15 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     
 
-const uploadDir = path.join('./public/image/product/'); 
+// const uploadDir = path.join('./public/image/product/'); 
 
     // cb(null, './public/image/product/'); // Specify the upload directory
-    cb(null, uploadDir); // Specify the upload directory
+  //   cb(null, uploadDir); // Specify the upload directory
 
-    // const imagePath = path.join(__dirname, 'uploads', imageName);
-  },
-  filename: function (req, file, cb) {
-    cb(null,file.originalname); // Define the filename
+  //   // const imagePath = path.join(__dirname, 'uploads', imageName);
+  // },
+  // filename: function (req, file, cb) {
+  //   cb(null,file.originalname); // Define the filename
   },
 });
 

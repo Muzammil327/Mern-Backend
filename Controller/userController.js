@@ -4,11 +4,10 @@ import { comparePassword, hashPassword } from "../utils/bcrypt.js";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET_KEY } from "../config.js";
 import Cookies from "js-cookie";
-import nodemailer from "nodemailer";
 import cloudinary from "../utils/cloudinary.js";
 
 export const registerController = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password , image} = req.body;
   //   validation
   if (!username) {
     return res.json({
@@ -50,6 +49,7 @@ export const registerController = asyncHandler(async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      image
     });
     // send user data
     const user = await newUser.save();
@@ -69,11 +69,22 @@ export const registerController = asyncHandler(async (req, res) => {
     });
   }
 });
-// update
+
 export const updateUserController = async (req, res) => {
   try {
     const { username, email } = req.body;
     const { id } = req.params;
+    let { image } = req.body;
+
+    if (image) {
+			if (user.image) {
+				await cloudinary.uploader.upload(user.image.split("/").pop().split(".")[0]);
+			}
+
+			const uploadedResponse = await cloudinary.uploader.upload(image);
+			image = uploadedResponse.secure_url;
+		}
+
     const category = await Userauthentication.findByIdAndUpdate(
       id,
       { username, email },

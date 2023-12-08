@@ -1,7 +1,7 @@
 import express from "express";
 import upload from "../utils/multer.js";
 import Product from "../model/productModel.js";
-
+import cloudinary from "../utils/cloudinary.js";
 import {
   createProductController,
   updateProductController,
@@ -12,6 +12,35 @@ import {
 } from "../Controller/productController.js";
 const router = express.Router();
 import slugify from "slugify";
+
+
+router.post('/upload', async (req, res) => {
+  
+  try {
+  
+
+    const result = await cloudinary.uploader.upload(req.body.img, {
+      folder: 'avatars',
+    });
+console.log(result)
+const newImage = new Product({
+  title: req.body.title,
+  img: req.body.img,
+  
+});
+console.log(newImage)
+
+    await newImage.save();
+
+    res.status(200).json(newImage);
+  } catch (error) {
+    console.error('Error uploading image', error);
+    res.status(500).json({ error: 'Image upload failed' });
+  }
+});
+
+
+
 
 router.post("/create", upload.single("photo"), async (req, res) => {
   const { name, slug } = req.body;
